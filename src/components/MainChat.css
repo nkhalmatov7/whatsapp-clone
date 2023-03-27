@@ -40,7 +40,7 @@
   background-color: #dcf8c6;
 }
 
-.chat__timestapm {
+.chat__timestamp {
   margin-left: 10px;
   font-size: xx-small;
 }
@@ -74,19 +74,25 @@
   align-items: center;
   height: 62px;
   border-top: 1px solid lightgray;
+  margin: 0px 7px 0px 7px;
 }
 
 .chat__footer > form {
   flex: 1;
   display: flex;
+  font-size: 16px;
+  margin: 0px 7px 0px 7px;
 }
 
 .chat__footer > form > input {
   flex: 1;
   border-radius: 10px;
   border: none;
+  padding: 15px;
+  font-size: 16px;
 }
 
 .chat__footer > form > button {
   display: none;
+  padding: 15px;
 }
