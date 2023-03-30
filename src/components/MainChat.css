@@ -69,12 +69,18 @@
 }
 
 .chat__footer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 62px;
   border-top: 1px solid lightgray;
   margin: 0px 7px 0px 7px;
+}
+
+.chat__footer > span {
+  position: absolute;
+  bottom: 80px;
 }
 
 .chat__footer > form {
@@ -90,6 +96,7 @@
   border: none;
   padding: 15px;
   font-size: 16px;
+  outline: none;
 }
 
 .chat__footer > form > button {

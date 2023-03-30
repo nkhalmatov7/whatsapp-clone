@@ -6,13 +6,14 @@ import {
   SearchOutlined,
 } from '@mui/icons-material'
 import { Avatar, IconButton } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import db from '../firebase'
 import { useStateValue } from '../StateProvider'
 import './MainChat.css'
 import firebase from 'firebase/compat/app'
-import moment from 'moment'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 const MainChat = () => {
   const [input, setInput] = useState('')
@@ -21,6 +22,9 @@ const MainChat = () => {
   const [roomName, setRoomName] = useState('Room Name')
   const [messages, setMessages] = useState([])
   const [{ user }, dispatch] = useStateValue()
+  const [showPicker, setShowPicker] = useState(false)
+  const [chosenEmoji, setChosenEmoji] = useState('')
+  const searchInput = useRef(null)
 
   useEffect(() => {
     if (roomId) {
@@ -52,6 +56,11 @@ const MainChat = () => {
     })
     setInput('')
   }
+
+  useEffect(() => {
+    setInput((prevInput) => prevInput + chosenEmoji)
+    searchInput.current.focus()
+  }, [chosenEmoji])
 
   return (
     <div className="mainChat">
@@ -100,14 +109,28 @@ const MainChat = () => {
         ))}
       </div>
       <div className="chat__footer">
-        <InsertEmoticon />
+        <span className="mainChat__picker">
+          {showPicker && (
+            <Picker
+              data={data}
+              previewPosition="none"
+              onEmojiSelect={(e) => {
+                setChosenEmoji(e.native)
+                setShowPicker(!showPicker)
+              }}
+            />
+          )}
+        </span>
+        <InsertEmoticon onClick={() => setShowPicker((val) => !val)} />
         <form>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message"
             type="text"
+            ref={searchInput}
           />
+
           <button onClick={sendMesage} type="submit">
             Send a message
           </button>

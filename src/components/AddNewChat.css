@@ -1,0 +1,6 @@
+.addNewChat__modal {
+    width: 100vw !important;
+    height: 100vh !important;
+    display: grid !important;
+    place-items: center !important;
+}

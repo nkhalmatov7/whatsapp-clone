@@ -12,6 +12,12 @@
   padding: 10px;
 }
 
+.sidebar__newChat::before {
+  content: "Add new chat";
+  text-align: center;
+  background-color: black;
+}
+
 .sidebar__searchContainer {
   display: flex;
   align-items: center;
@@ -23,11 +29,15 @@
 
 .sidebar__searchContainer > .MuiSvgIcon-root {
   color: gray;
+  margin-left: 10px;
 }
 
 .sidebar__searchContainer > input {
+  flex: 1;
   border: none;
-  margin-left: 10px;
+  margin: 0 10px 0 10px;
+  padding: 5px;
+  outline: none;
 }
 
 .sidebar__header {
@@ -40,7 +50,7 @@
 .sidebar__headerRight {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   min-width: 10vw;
 }
 
